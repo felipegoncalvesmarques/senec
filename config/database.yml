@@ -1,0 +1,54 @@
+# @Author: Felipe Gonçalves Marques
+# @Date:   2016-11-09 20:11:39
+# @Email:  marques.goncalves.felipe@gmail.com
+# @Last modified by:   Felipe Gonçalves Marques
+# @Last modified time: 2016-11-10 10:11:72
+
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+ adapter: mysql2
+ encoding: utf8
+ reconnect: false
+ database: senec-dev
+ pool: 5
+ username: root
+ password: root
+
+
+development:
+ <<: *default
+ adapter: mysql2
+ encoding: utf8
+ reconnect: false
+ database: senec-dev
+ pool: 5
+ username: root
+ password: root
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+ <<: *default
+ adapter: mysql2
+ encoding: utf8
+ reconnect: false
+ database: senec-test
+ pool: 5
+ username: root
+ password: root
+
+production:
+ <<: *default
+ adapter: mysql
+ encoding: utf8
+ reconnect: false
+ database: senec
+ pool: 5
+ username: root
+ password: root

@@ -1,0 +1,16 @@
+<h1> Altere o palestrante de uma palestra </h1>
+<%= form_for :activity_speaker, url: activity_speaker_path(@activity_speaker), method: :patch do |f| %>
+		<div class="field">
+		<%= f.label :atividade %> 
+		<%= f.collection_select :activity_id, Activity.where(esta_ativo: true), :id, :titulo %>
+	</div>
+	<div class="field">
+		<%= f.label :palestrante %>
+		<%= f.collection_select :speaker_id, Speaker.where(esta_ativo: true), :id, :nome %>
+	</div>
+	<%= f.submit value: "Atualizar Palestrante da Atividade" %>
+<% end %>
+
+<%= link_to 'Destroy', activity_speaker_path(@activity_speaker),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>

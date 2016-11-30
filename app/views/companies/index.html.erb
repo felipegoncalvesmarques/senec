@@ -1,0 +1,26 @@
+<!--
+@Author: Felipe Gonçalves Marques
+@Date:   2016-11-13 17:11:79
+@Email:  marques.goncalves.felipe@gmail.com
+@Last modified by:   Felipe Gonçalves Marques
+@Last modified time: 2016-11-13 17:11:87
+-->
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Endereço</th>
+    <th>Logo</th>
+    <th>Telefone</th>
+  </tr>
+  <% @companies.each do |company| %>
+    <tr>
+      <td><%= company.nome %></td>
+      <td><%= company.descricao %></td>
+      <td><%= company.endereco %></td>
+      <td><%= company.logo %></td>
+      <td><%= company.telefone %></td>
+    </tr>
+  <% end %>
+</table>

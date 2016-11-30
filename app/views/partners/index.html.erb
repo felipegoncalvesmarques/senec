@@ -1,0 +1,78 @@
+<h1>Bem-vindo <%= @partner.nome %></h2>
+<%= link_to 'Log out', destroy_partner_session_path, method: :delete %>
+<h2><%= @partner.company.nome %></h2>
+<p><%= @partner.company.descricao %></p>
+<p><b>Endereço:</b> <%= @partner.company.endereco %></p>
+<p><b>Telefone:</b> <%= @partner.company.telefone %></p>
+<p>
+	<h3>Palestrantes:</h3>
+	<ul>
+		<% @partner.company.speakers.where(esta_ativo: true).each do |speaker| %>
+		<li>
+			<%= link_to speaker.nome, company_speaker_path(@partner.company,speaker) %>
+		</li>
+		<% end %>
+	</ul>
+</p>
+<h3>Atividades</h3>
+<ul>
+<% @activities.each do |activity| %>
+	<li>
+		<b style="font-size: 20px"><%= activity.titulo %></b>
+		<p><%= activity.descricao %></p>
+		<p><b>Local:</b> <%= activity.local %></p>
+		<p><b>Data e Horário:</b> <%= activity.data_horario.strftime("%H:%M %d/%h/%Y") %></p>
+		<p><b>Número de Vagas:</b> <%= activity.numero_de_vagas %></p>
+		<p><b>Número de Inscritos:</b> <%= activity.count_subscribers %></p>
+		<p><b>Número de Presentes:</b> <%= activity.attendees.count() %></p>
+		<p>
+			<b>Palestrantes:</b>
+			<ul>
+				<% activity.activity_speakers.each do |activity_speaker| %>
+					<li><%= link_to activity_speaker.speaker.nome, 
+						company_speaker_path(activity_speaker.speaker.company,activity_speaker.speaker) %>
+					</li>
+				<% end %>
+			</ul>
+		</p>
+		<p>
+			<b>Inscritos:</b>
+			<ul>
+				<% activity.subscriptions.where(esta_ativo: true).each do |subscriptions| %>
+					<li><%= subscriptions.participant.nome %></li>
+				<% end %>
+			</ul>
+		</p>
+		<p>
+			<b>Presentes:</b>
+			<ul>
+				<% activity.presences.each do |presence| %>
+					<li>
+						<%= presence.participant.nome %>
+					</li>
+				<% end %>
+			</ul>
+		</p>
+		<p>
+			<b>Feedbacks:</b>
+			<ul>
+				<% activity.presences.each do |presence| %>
+					<% feedback = activity.feedbacks.where(participant: presence.participant).first %>
+					<% if feedback != nil %>
+						<p>
+							<b>Pontos positivos</b><br>
+							<%= feedback.pontos_positivos %>
+						</p>
+						<p>
+							<b>Pontos negativos:</b><br>
+							<%= feedback.pontos_negativos %>
+						</p>
+						<b>Nota:</b> <%= feedback.nota %>
+					<% end %>
+				<% end %>
+			</ul>
+		</p>
+	</li>
+<% end %>
+</ul>
+	

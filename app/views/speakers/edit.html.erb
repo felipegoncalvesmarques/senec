@@ -1,0 +1,30 @@
+<!--
+@Author: Felipe Gonçalves Marques
+@Date:   2016-11-16 19:11:57
+@Email:  marques.goncalves.felipe@gmail.com
+@Last modified by:   Felipe Gonçalves Marques
+@Last modified time: 2016-11-16 19:11:52
+-->
+
+<h1>Edite o palestrante <%= @speaker.nome %></h1>
+
+<%= form_for :speaker, url: company_speaker_path(@company, @speaker), method: :patch do |f| %>
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome, autofocus: true %>
+  </div>
+  <div>
+    <%= f.label :descricao %><br>
+    <%= f.text_area :descricao %>
+  </div>
+  <div>
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </div>
+  <%= f.submit value: "Alterar dados"%>
+
+<% end %>
+
+<%= link_to 'Deletar', company_speaker_path(@company, @speaker),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>

@@ -1,0 +1,14 @@
+<h1>Feedback sobre <%= @feedback.activity.titulo %></h1>
+<h2>Fornecido por <%= @feedback.participant.nome %></h2>
+<div>
+	<b>Pontos Positivos:</b><br>
+	<%= @feedback.pontos_positivos %>
+</div>
+<div>
+	<b>Pontos Negativos:</b><br>
+	<%= @feedback.pontos_negativos %>
+</div>
+<div>
+	<b>Nota:</b>
+	<%= @feedback.nota %>
+</div>

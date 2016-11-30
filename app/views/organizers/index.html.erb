@@ -1,0 +1,143 @@
+<h1>Bem-vindo <%= @organizer.nome %></h1><%= link_to('Logout', destroy_organizer_session_path, :method => :delete) %> 
+<table style="width: 100%;">
+	<tr>
+		<th style="width: 33%;"><h3>Empresas</h3></th>
+		<th style="width: 33%;"><h3>Atividades</h3></th>
+		<th style="width: 33%;"><h3>Participantes</h3></th>
+	</tr>
+	<tr>
+		<td style="width: 33%;"><%= link_to 'Adicionar', new_company_path %></td>
+		<td style="width: 33%;"><%= link_to 'Adicionar', new_activity_path %></td>
+	</tr>
+	<tr>
+		<td style="width: 33%;">
+			<ul>
+				<% @companies.each do |company| %>
+					<li>
+						<b style="font-size: 30px;"><%= company.nome %></b>
+						<%= link_to "Editar", edit_company_path(company) %>
+						<%= link_to 'Deletar', company_path(company),
+            							method: :delete,
+              							data: { confirm: 'Tem certeza?' } %>
+						<br>
+						<p><%= company.descricao %></p>
+						<p><b>Endereço:</b> <%= company.endereco %></p>
+						<p><b>Telefone:</b> <%= company.telefone %></p>
+						<p>
+							<b>Parceiros:</b>
+							<%= link_to 'Adicionar', new_partner_registration_path %>
+							<ul>
+								<% company.partners.where(esta_ativo: true).each do |partner| %>
+									<li>
+										<%= partner.nome %>
+									</li>
+								<% end %>
+							</ul>
+						</p>
+						<p>
+							<b>Palestrantes:</b>
+							<%= link_to 'Adicionar', new_company_speaker_path(company) %>
+							<ul>
+								<% company.speakers.where(esta_ativo: true).each do |speaker| %>
+									<li>
+										<%= link_to speaker.nome, company_speaker_path(company,speaker) %>
+										<%= link_to 'Editar', edit_company_speaker_path(company,speaker) %>
+										<%= link_to 'Deletar', company_speaker_path(company, speaker),
+              										method: :delete,
+              										data: { confirm: 'Tem certeza?' } %>
+									</li>
+								<% end %>
+							</ul>
+						<p>
+					</li>
+				<% end %>
+			</ul>
+		</td>
+		<td style="width: 33%;">
+			<ul>
+				<% @activities.each do |activity| %>
+					<li>
+						<b style="font-size: 30px"><%= activity.titulo %></b>
+						<%= link_to "Editar", edit_activity_path(activity) %>
+						<%= link_to "Deletar", activity_path(activity),
+										method: :delete,
+										data: { comfirm: 'Tem certeza?'} %>
+						<p><%= activity.descricao %></p>
+						<p><b>Local:</b> <%= activity.local %></p>
+						<p><b>Data e Horário:</b> <%= activity.data_horario.strftime("%H:%M %d/%h/%Y") %></p>
+						<p><b>Número de Vagas:</b> <%= activity.numero_de_vagas %></p>
+						<p><b>Número de Inscritos:</b> <%= activity.count_subscribers %></p>
+						<p><b>Número de Presentes:</b> <%= activity.attendees.count() %></p>
+						<p>
+							<b>Palestrantes:</b>
+							<%= link_to 'Adicionar', new_activity_activity_speaker_path(activity) %>
+							<ul>
+								<% activity.activity_speakers.each do |activity_speaker| %>
+									<li><%= link_to activity_speaker.speaker.nome, 
+										company_speaker_path(activity_speaker.speaker.company,activity_speaker.speaker) %>
+										<%= link_to 'Remover', 
+											activity_activity_speaker_path(activity, 
+												activity_speaker),
+											method: :delete,
+											data: { confirm: 'Tem certeza?'} %></li>
+								<% end %>
+							</ul>
+						</p>
+						<p>
+							<b>Inscritos:</b>
+							<ul>
+								<% activity.subscriptions.where(esta_ativo: true).each do |subscriptions| %>
+									<li><%= subscriptions.participant.nome %></li>
+								<% end %>
+							</ul>
+						</p>
+						<p>
+							<b>Presentes:</b>
+							<%= link_to 'Adicionar', new_activity_presence_path(activity) %>
+							<ul>
+								<% activity.presences.each do |presence| %>
+									<li>
+										<%= presence.participant.nome %>
+										<%= link_to 'Remover', activity_presence_path(activity, presence),
+												method: :delete,
+												data: { comfirm: 'Tem certeza?'} %>
+									</li>
+								<% end %>
+							</ul>
+						</p>
+						<p>
+							<b>Feedbacks:</b>
+							<ul>
+								<% activity.presences.each do |presence| %>
+									<% feedback = activity.feedbacks.where(participant: presence.participant).first %>
+									<% if feedback != nil %>
+										<p>
+											<b>Pontos positivos</b><br>
+											<%= feedback.pontos_positivos %>
+										</p>
+										<p>
+											<b>Pontos negativos:</b><br>
+											<%= feedback.pontos_negativos %>
+										</p>
+										<b>Nota:</b> <%= feedback.nota %>
+									<% end %>
+								<% end %>
+							</ul>
+						</p>
+					</li>
+				<% end %>
+			</ul>
+		</td>
+		<td style="width: 33%;">
+			<ul>
+				<% @participants.each do |participant| %>
+					<li>
+						<b><%= participant.nome %></b>
+						<p><b>Telefone:</b> <%= participant.telefone %></p>
+						<p><b>Email:</b> <%= participant.email %></p>
+					</li>
+				<% end %>
+			</ul>
+		</td>
+	</tr>
+</table>

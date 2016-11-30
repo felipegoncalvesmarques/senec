@@ -1,0 +1,2 @@
+module ActivitySpeakersHelper
+end

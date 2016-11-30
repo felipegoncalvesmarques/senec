@@ -1,0 +1,35 @@
+<!--
+@Author: Felipe Gonçalves Marques
+@Date:   2016-11-17 19:11:36
+@Email:  marques.goncalves.felipe@gmail.com
+@Last modified by:   Felipe Gonçalves Marques
+@Last modified time: 2016-11-17 19:11:37
+-->
+<h1> Crie uma atividade </h1>
+<%= form_for :activity, url: activities_path do |f| %>
+  <div class="field">
+    <%= f.label :titulo %><br>
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_area :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :local %><br>
+    <%= f.text_field :local %>
+  </div>
+  <div class="field">
+    <%= f.label :data_horario %><br>
+    <%= f.datetime_select :data_horario %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_de_vagas %><br>
+    <%= f.text_field :numero_de_vagas %>
+  </div>
+  <div class="field">
+    <%= f.label :data_limite_de_inscricao %><br>
+    <%= f.datetime_select :data_limite_de_inscricao %>
+  </div>
+  <%= f.submit %>
+<% end %>

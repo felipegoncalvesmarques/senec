@@ -1,0 +1,20 @@
+<!--
+@Author: Felipe Gonçalves Marques
+@Date:   2016-11-13 13:11:31
+@Email:  marques.goncalves.felipe@gmail.com
+@Last modified by:   Felipe Gonçalves Marques
+@Last modified time: 2016-11-13 17:11:52
+-->
+
+<h1><%= @company.nome %></h1>
+
+<h2><%= @company.descricao %></h2>
+
+<div><b>Endereço:</b> <%= @company.endereco %></div>
+<div><b>Telefone:</b> <%= @company.telefone %></div>
+<div><b>Logo path:</b> <%= @company.logo %></div>
+<div><%= @company.created_at%> / <%=@company.updated_at%></div>
+<div><b>Created by:</b> <%= @company.criado_por.nome %>(<%= @company.criado_por.email %>) </div>
+<% if @company.atualizado_por != nil %>
+  <div><b>Updated By:</b> <%= @company.atualizado_por.nome %>(<%= @company.atualizado_por.email %>) </di>
+<% end %>

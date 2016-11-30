@@ -1,0 +1,27 @@
+<!--
+@Author: Felipe Gonçalves Marques
+@Date:   2016-11-17 19:11:15
+@Email:  marques.goncalves.felipe@gmail.com
+@Last modified by:   Felipe Gonçalves Marques
+@Last modified time: 2016-11-17 19:11:21
+-->
+
+<h1><%= @activity.titulo %></h1>
+<h2><%= @activity.descricao %></h2>
+<div>
+  Local: <%= @activity.local %>
+</div>
+<div>
+  Data e Horário: <%= @activity.data_horario %>
+</div>
+<div>
+  Número de Vagas: <%= @activity.numero_de_vagas %>
+</div>
+<div>
+  Data Limite de Inscrição: <%= @activity.data_limite_de_inscricao %>
+</div>
+<div><%= @activity.created_at%> / <%=@activity.updated_at%></div>
+<div><b>Created by:</b> <%= @activity.criado_por.nome %>(<%= @activity.criado_por.email %>) </div>
+<% if @activity.atualizado_por != nil %>
+  <div><b>Updated By:</b> <%= @activity.atualizado_por.nome %>(<%= @activity.atualizado_por.email %>) </di>
+<% end %>

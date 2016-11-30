@@ -1,0 +1,19 @@
+<!--
+@Author: Felipe Gonçalves Marques
+@Date:   2016-11-16 19:11:99
+@Email:  marques.goncalves.felipe@gmail.com
+@Last modified by:   Felipe Gonçalves Marques
+@Last modified time: 2016-11-16 19:11:78
+-->
+
+<h1><%= @speaker.nome %></h1>
+
+<h2><%= @speaker.descricao %></h2>
+
+<div><b>Telefone:</b> <%= @speaker.telefone %></div>
+<div><b>Empresa:</b> <%= @speaker.company.nome %></div>
+<div><%= @speaker.created_at%> / <%=@speaker.updated_at%></div>
+<div><b>Created by:</b> <%= @speaker.criado_por.nome %>(<%= @speaker.criado_por.email %>) </div>
+<% if @speaker.atualizado_por != nil %>
+  <div><b>Updated By:</b> <%= @speaker.atualizado_por.nome %>(<%= @speaker.atualizado_por.email %>) </di>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Adicione um participante a uma palestra!</h1>
+<%= form_for([@activity, @activity.activity_speakers.build]) do |f| %>
+	<div class="field">
+		<%= f.label :palestrante %>
+		<%= f.collection_select :speaker_id, Speaker.where(esta_ativo: true), :id, :nome %>
+	</div>
+	<%= f.submit value: "Adicionar Palestrante à Atividade" %>
+<% end %>

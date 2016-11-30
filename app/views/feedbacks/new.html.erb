@@ -1,0 +1,16 @@
+<h1>De feedback sobre <%= @activity.titulo %>!</h1>
+<%= form_for([@activity, @activity.feedbacks.build]) do |f| %>
+	<div class="field">
+		<%= f.label :pontos_positivos %><br>
+		<%= f.text_area :pontos_positivos %>
+	</div>
+	<div class="field">
+		<%= f.label :pontos_negativos %><br>
+		<%= f.text_area :pontos_negativos %>
+	</div>
+	<div class="field">
+		<%= f.label :nota %>
+		<%= f.select :nota, [1,2,3,4,5,6,7,8,9,10] %>
+	</div>
+	<%= f.submit value: "Enviar feedback" %>
+<% end %>

@@ -1,0 +1,28 @@
+<!--
+@Author: Felipe Gonçalves Marques
+@Date:   2016-11-12 09:11:80
+@Email:  marques.goncalves.felipe@gmail.com
+@Last modified by:   Felipe Gonçalves Marques
+@Last modified time: 2016-11-12 17:11:19
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Senec</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<ul>
+  <% flash.each do |key, value| %>
+    <li>
+      <%= value %>
+    </li>
+  <% end %>
+</ul>
+<%= yield %>
+
+</body>
+</html>

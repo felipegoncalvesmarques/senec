@@ -1,0 +1,62 @@
+<!--
+@Author: Felipe Gonçalves Marques
+@Date:   2016-11-12 11:11:54
+@Email:  marques.goncalves.felipe@gmail.com
+@Last modified by:   Felipe Gonçalves Marques
+@Last modified time: 2016-11-12 12:11:71
+-->
+
+<h2>Cadastre-se</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefone %><br />
+    <%= f.text_field :telefone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :insituto %><br />
+    <%= f.select :instituto, ['POLI','IME','IF','FEA'] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ano_de_ingresso %><br />
+    <%= f.select :ano, (1900..Time.now.year).to_a %>
+  </div>
+
+  <div class="field">
+    <%= f.label :curso %><br />
+    <%= f.text_field :curso %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "participants/shared/links" %>
