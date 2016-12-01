@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'participants/index'
   get 'organizers/index'
   get 'partners/index'
+  root  'welcome#index' 
   devise_for :partners, :controllers => {registrations: 'partners/registrations'}
   devise_for :organizers, :controllers => {registrations: 'organizers/registrations'}
   devise_for :participants, :controllers => {registrations: 'participants/registrations'}
@@ -22,5 +23,4 @@ Rails.application.routes.draw do
     resources :activity_speakers
     resources :subscriptions, only: [:create, :destroy, :update]
   end
-  root  'welcome#index' 
 end
