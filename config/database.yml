@@ -39,16 +39,18 @@ test:
  encoding: utf8
  reconnect: false
  database: senec-test
+ url: mysql://senec-dev.cpyyszx5y0mu.us-west-2.rds.amazonaws.com
  pool: 5
  username: root
  password: root
 
 production:
  <<: *default
- adapter: mysql
+ adapter: mysql2
  encoding: utf8
  reconnect: false
  database: senec
  pool: 5
  username: root
  password: root
+ url: mysql2://senec-dev.cpyyszx5y0mu.us-west-2.rds.amazonaws.com
