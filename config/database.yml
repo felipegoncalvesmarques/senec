@@ -52,5 +52,5 @@ production:
  database: senec
  pool: 5
  username: root
- password: root
+ password: senec*123
  url: mysql2://senec-dev.cpyyszx5y0mu.us-west-2.rds.amazonaws.com
