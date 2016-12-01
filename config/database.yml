@@ -26,7 +26,7 @@ development:
  encoding: utf8
  reconnect: false
  database: senec-dev
- url: mysql://senec-dev.cpyyszx5y0mu.us-west-2.rds.amazonaws.com
+ url: mysql2://senec-dev.cpyyszx5y0mu.us-west-2.rds.amazonaws.com
  pool: 5
  username: root
  password: senec*123
@@ -40,7 +40,7 @@ test:
  encoding: utf8
  reconnect: false
  database: senec-test
- url: mysql://senec-dev.cpyyszx5y0mu.us-west-2.rds.amazonaws.com
+ url: mysql2://senec-dev.cpyyszx5y0mu.us-west-2.rds.amazonaws.com
  pool: 5
  username: root
  password: root
