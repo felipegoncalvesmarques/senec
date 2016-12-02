@@ -2,7 +2,7 @@
 <%= form_for([@activity, @activity.presences.build]) do |f| %>
 	<div class="field">
 		<%= f.label :participante %>
-		<%= f.collection_select :participant_id, Participant.where(esta_ativo: true), :id, :nome %>
+		<%= f.collection_select :participant_id, Participant.where(esta_ativo: true).order(:nome), :id, :nome %>
 	</div>
 	<%= f.submit value: "Marcar presença" %>
 <% end %>

@@ -4,8 +4,8 @@ class PartnersController < ApplicationController
 	def index
 		@partner = current_partner
 		@activities = []
-		@partner.company.speakers.each do |speaker|
-			speaker.activities.each do |activity|
+		@partner.company.speakers.order(:nome).each do |speaker|
+			speaker.activities.order(:nome).each do |activity|
 				@activities << activity unless @activities.include?(activity)
 			end
 		end

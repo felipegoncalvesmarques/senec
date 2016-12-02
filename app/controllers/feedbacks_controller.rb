@@ -3,6 +3,7 @@ class FeedbacksController < ApplicationController
 
 	def new
 		@activity = Activity.find(params[:activity_id])
+		@feedback = Feedback.new
 	end
 	
 	def create
