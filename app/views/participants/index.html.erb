@@ -6,7 +6,7 @@
 		<th style="width: 50%;">Presente</th>
 	</tr>
 	<tr>
-		<td style="width: 50%;">
+		<td valign="top" style="width: 50%;">
 			<ul>
 				<% @participant.subscriptions.where(esta_ativo: true).each do |s| %>
 					<li><%= s.activity.titulo %><br>
@@ -29,7 +29,7 @@
 				<% end %>
 			</ul>
 		</td>
-		<td style="width: 50%;">
+		<td valign="top" style="width: 50%;">
 			<ul>
 				<% @participant.presences.each do |p| %>
 					<li>
@@ -47,15 +47,15 @@
 <h2>Cronograma</h2>
 <table style="width: 100%;">
 	<tr>
-		<th style="width: 20%;">Segunda</th>
-		<th style="width: 20%;">Terça</th>
-		<th style="width: 20%;">Quarta</th>
-		<th style="width: 20%;">Quinta</th>
-		<th style="width: 20%;">Sexta</th>
+		<th valign="top" style="width: 20%;">Segunda</th>
+		<th valign="top" style="width: 20%;">Terça</th>
+		<th valign="top" style="width: 20%;">Quarta</th>
+		<th valign="top" style="width: 20%;">Quinta</th>
+		<th valign="top" style="width: 20%;">Sexta</th>
 	</tr>
 	<tr>
 		<% @activities.each do |activities_in_day| %>
-			<td style="width: 20%;">
+			<td valign="top" style="width: 20%;">
 				<ul>
 					<%  activities_in_day.each do |activity| %>
 						<li>
