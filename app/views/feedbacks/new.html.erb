@@ -1,6 +1,19 @@
 <h1>De feedback sobre <%= @activity.titulo %>!</h1>
 <%= form_for([@activity, @activity.feedbacks.build]) do |f| %>
-	<div class="field">
+	<% if @feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@feedback.errors.count, "error") %> impedem
+        essa feedback de ser criada:
+      </h2>
+      <ul>
+        <% @feedback.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
 		<%= f.label :pontos_positivos %><br>
 		<%= f.text_area :pontos_positivos %>
 	</div>

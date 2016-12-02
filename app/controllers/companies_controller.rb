@@ -11,6 +11,7 @@ class CompaniesController < ApplicationController
     @companies = Company.where(esta_ativo: true)
   end
   def new
+    @company = Company.new
   end
 
   def create

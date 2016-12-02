@@ -9,6 +9,19 @@
 <h1>Crie uma empresa</h1>
 
 <%= form_for :company, url: companies_path do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@company.errors.count, "error") %> impedem
+        essa empresa de ser criada:
+      </h2>
+      <ul>
+        <% @company.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :nome %><br>
     <%= f.text_field :nome, autofocus: true %>

@@ -8,6 +8,7 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_organizer!, only: [:new, :create, :edit, :update]
 
   def new
+    @activity = Activity.new
   end
   def create
     params = activities_param

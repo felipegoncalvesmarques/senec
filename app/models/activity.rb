@@ -5,6 +5,8 @@
 # @Last modified time: 2016-11-17 19:11:37
 
 class Activity < ActiveRecord::Base
+  validates :titulo, :descricao, :local, presence: true, length: { maximum: 45 }
+  validates :numero_de_vagas, :data_limite_de_inscricao, presence: true
   belongs_to :criado_por, class_name: "Organizer", foreign_key: 'criado_por_id'
   belongs_to :atualizado_por, class_name: "Organizer", foreign_key: 'atualizado_por_id'
   has_many :activity_speakers

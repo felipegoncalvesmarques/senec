@@ -9,6 +9,8 @@ class Participant < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  validates :nome, :telefone, :instituto, :curso, presence: true, length: { maximum: 45}
+  validates :ano, presence: true
   has_many :subscriptions
   has_many :presences
   has_many :feedbacks

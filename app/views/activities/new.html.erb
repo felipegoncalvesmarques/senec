@@ -7,6 +7,19 @@
 -->
 <h1> Crie uma atividade </h1>
 <%= form_for :activity, url: activities_path do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@activity.errors.count, "error") %> impedem
+        essa atividade de ser criada:
+      </h2>
+      <ul>
+        <% @activity.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :titulo %><br>
     <%= f.text_field :titulo %>
