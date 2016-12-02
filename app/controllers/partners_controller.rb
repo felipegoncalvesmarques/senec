@@ -5,7 +5,7 @@ class PartnersController < ApplicationController
 		@partner = current_partner
 		@activities = []
 		@partner.company.speakers.order(:nome).each do |speaker|
-			speaker.activities.order(:nome).each do |activity|
+			speaker.activities.order(:titulo).each do |activity|
 				@activities << activity unless @activities.include?(activity)
 			end
 		end
