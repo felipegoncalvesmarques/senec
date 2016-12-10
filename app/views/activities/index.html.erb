@@ -1,0 +1,19 @@
+<h1>Activities</h1>
+<table>
+	<tr>
+		<th>Título</th>
+		<th>Descrição</th>
+		<th>Local</th>
+		<th>Número de Vagas</th>
+		<th>Data Horário</th>
+	</tr>
+	<% @activities.each do |activity| %>
+		<tr>
+			<td><%= activity.titulo %></td>
+			<td><%= activity.descricao %></td>
+			<td><%= activity.local %></td>
+			<td><%= activity.numero_de_vagas %></td>
+			<td><%= activity.data_horario %></td>
+		</tr>
+	<% end %>
+</table>

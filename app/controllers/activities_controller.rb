@@ -10,6 +10,13 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
   end
+  def index
+    @activities = Activity.all()
+    respond_to do |format|
+      format.html
+      format.json {render json: @activities}
+    end
+  end
   def create
     params = activities_param
     params[:criado_por] = current_organizer

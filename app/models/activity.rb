@@ -49,4 +49,14 @@ class Activity < ActiveRecord::Base
   def count_subscribers
     return self.subscriptions.where(esta_ativo: true).count()
   end
+
+  def data_horario_format
+    data_horario.strftime("%Y-%m-%d %H:%M:%S")
+  end
+  
+  def as_json(options={})
+    json = super(only: [:id, :titulo, :descricao, :local, :numero_de_vagas])
+    json[:data_horario] = data_horario_format
+    json
+  end
 end
