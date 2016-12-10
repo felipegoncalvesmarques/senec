@@ -26,4 +26,7 @@ class Participant < ActiveRecord::Base
   def inactive_message
     self.esta_ativo ? super : 'Conta desativada, mande email para contato@senec.com.br'
   end
+  def as_json(options={})
+    super(only: [:id, :nome, :email])
+  end
 end

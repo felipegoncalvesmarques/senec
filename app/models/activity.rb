@@ -57,6 +57,8 @@ class Activity < ActiveRecord::Base
   def as_json(options={})
     json = super(only: [:id, :titulo, :descricao, :local, :numero_de_vagas])
     json[:data_horario] = data_horario_format
+    json[:inscritos] = subscribers.as_json()
+    json[:presentes] = attendees.as_json()
     json
   end
 end
