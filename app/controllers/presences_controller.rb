@@ -7,9 +7,14 @@ class PresencesController < ApplicationController
 
 	def create
 		@activity = Activity.find(params[:activity_id])
-		@presence = @activity.presences.create(presence_param)
-		if @presence.save
-			redirect_to organizers_index_path
+		@participant = Participant.find(params[:participant_id])
+		if not(@activity.attendees.include?(@participant))
+			@presence = @activity.presences.create(presence_param)
+			if @presence.save
+				redirect_to organizers_index_path
+			else
+				render 'new'
+			end
 		else
 			render 'new'
 		end
