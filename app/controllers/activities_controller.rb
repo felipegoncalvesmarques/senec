@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
   end
   def index
-    @activities = Activity.all()
+    @activities = Activity.where(esta_ativo: true).order(:data_horario)
     respond_to do |format|
       format.html
       format.json {render json: @activities}
