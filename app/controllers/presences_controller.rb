@@ -1,5 +1,5 @@
 class PresencesController < ApplicationController
-	before_action :authenticate_organizer!, only: [:new, :create, :show, :destroy]
+	before_action :authenticate_organizer!, only: [:new, :show, :destroy]
 	def new
 		@activity = Activity.find(params[:activity_id])
 	end
