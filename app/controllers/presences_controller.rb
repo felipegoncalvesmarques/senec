@@ -7,7 +7,7 @@ class PresencesController < ApplicationController
 
 	def create
 		@activity = Activity.find(params[:activity_id])
-		@participant = Participant.find(presence_param)
+		@participant = Participant.find(presence_param[:participant_id])
 		if not(@activity.attendees.include?(@participant))
 			@presence = @activity.presences.create(presence_param)
 			if @presence.save
